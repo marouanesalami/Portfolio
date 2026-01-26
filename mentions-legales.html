@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentions Légales - Marouane Salami</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body style="cursor: auto;">
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="container nav-inner">
+        <a href="index.html" class="logo">MS<span>.</span></a>
+        <div class="nav-right">
+            <a href="index.html" class="btn btn-ghost">
+                <i class="fas fa-arrow-left"></i> Retour
+            </a>
+            <button class="theme-switch" id="themeToggle" aria-label="Changer de thème">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- BG CANVAS -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- CONTENU MENTIONS LÉGALES -->
+<section style="padding: 120px 0 80px;">
+    <div class="container" style="max-width: 900px;">
+        <h1 style="font-size: 3rem; margin-bottom: 20px; text-align: center;">Mentions Légales</h1>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 60px;">Dernière mise à jour : 22 janvier 2026</p>
+
+        <div class="glass" style="padding: 40px; margin-bottom: 30px;">
+            <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--accent-primary);">
+                <i class="fas fa-user"></i> Éditeur du site
+            </h2>
+            <p style="margin-bottom: 10px;"><strong>Nom :</strong> Marouane Salami</p>
+            <p style="margin-bottom: 10px;"><strong>Statut :</strong> Étudiant en BUT Métiers du Multimédia et de l'Internet</p>
+            <p style="margin-bottom: 10px;"><strong>Établissement :</strong> IUT de Bobigny</p>
+            <p style="margin-bottom: 10px;"><strong>Contact :</strong> via le formulaire de contact du site</p>
+        </div>
+
+        <div class="glass" style="padding: 40px; margin-bottom: 30px;">
+            <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--accent-primary);">
+                <i class="fas fa-server"></i> Hébergement
+            </h2>
+            <p style="margin-bottom: 10px;">Ce site est hébergé par :</p>
+            <p style="margin-bottom: 10px;"><strong>Hébergeur :</strong> [À compléter - ex: OVH, Vercel, Netlify]</p>
+            <p style="margin-bottom: 10px;"><strong>Adresse :</strong> [À compléter]</p>
+            <p style="margin-bottom: 10px;"><strong>Téléphone :</strong> [À compléter]</p>
+        </div>
+
+        <div class="glass" style="padding: 40px; margin-bottom: 30px;">
+            <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--accent-primary);">
+                <i class="fas fa-shield-alt"></i> Protection des données personnelles (RGPD)
+            </h2>
+
+            <h3 style="font-size: 1.3rem; margin-top: 30px; margin-bottom: 15px;">Responsable du traitement</h3>
+            <p style="margin-bottom: 20px;">Le responsable du traitement des données personnelles collectées sur ce site est Marouane Salami.</p>
+
+            <h3 style="font-size: 1.3rem; margin-top: 30px; margin-bottom: 15px;">Données collectées</h3>
+            <p style="margin-bottom: 15px;">Dans le cadre de l'utilisation du formulaire de contact, nous collectons les données suivantes :</p>
+            <ul style="list-style: disc; margin-left: 30px; margin-bottom: 20px; color: var(--text-muted);">
+                <li style="margin-bottom: 8px;">Nom et prénom</li>
+                <li style="margin-bottom: 8px;">Adresse e-mail</li>
+                <li style="margin-bottom: 8px;">Message envoyé</li>
+            </ul>
+
+            <h3 style="font-size: 1.3rem; margin-top: 30px; margin-bottom: 15px;">Finalité du traitement</h3>
+            <p style="margin-bottom: 20px;">Les données personnelles collectées via le formulaire de contact sont utilisées uniquement pour :</p>
+            <ul style="list-style: disc; margin-left: 30px; margin-bottom: 20px; color: var(--text-muted);">
+                <li style="margin-bottom: 8px;">Répondre à vos demandes de contact</li>
+                <li style="margin-bottom: 8px;">Gérer les demandes de stage ou d'alternance</li>
+            </ul>
+
+            <h3 style="font-size: 1.3rem; margin-top: 30px; margin-bottom: 15px;">Durée de conservation</h3>
+            <p style="margin-bottom: 20px;">Les données personnelles sont conservées pendant une durée maximale de 3 ans à compter de notre dernier contact, puis sont supprimées.</p>
+
+            <h3 style="font-size: 1.3rem; margin-top: 30px; margin-bottom: 15px;">Vos droits</h3>
+            <p style="margin-bottom: 15px;">Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants :</p>
+            <ul style="list-style: disc; margin-left: 30px; margin-bottom: 20px; color: var(--text-muted);">
+                <li style="margin-bottom: 8px;"><strong>Droit d'accès :</strong> obtenir une copie de vos données personnelles</li>
+                <li style="margin-bottom: 8px;"><strong>Droit de rectification :</strong> corriger vos données inexactes ou incomplètes</li>
+                <li style="margin-bottom: 8px;"><strong>Droit à l'effacement :</strong> demander la suppression de vos données</li>
+                <li style="margin-bottom: 8px;"><strong>Droit d'opposition :</strong> vous opposer au traitement de vos données</li>
+                <li style="margin-bottom: 8px;"><strong>Droit à la portabilité :</strong> recevoir vos données dans un format structuré</li>
+            </ul>
+            <p style="margin-bottom: 20px;">Pour exercer vos droits, vous pouvez me contacter via le formulaire de contact du site.</p>
+        </div>
+
+        <div class="glass" style="padding: 40px; margin-bottom: 30px;">
+            <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--accent-primary);">
+                <i class="fas fa-cookie-bite"></i> Cookies
+            </h2>
+            <p style="margin-bottom: 15px;">Ce site utilise des cookies pour améliorer votre expérience de navigation. Les cookies utilisés sont :</p>
+
+            <h3 style="font-size: 1.3rem; margin-top: 30px; margin-bottom: 15px;">Cookies strictement nécessaires</h3>
+            <ul style="list-style: disc; margin-left: 30px; margin-bottom: 20px; color: var(--text-muted);">
+                <li style="margin-bottom: 8px;"><strong>cookie-consent :</strong> mémorise votre choix concernant les cookies (durée : 1 an)</li>
+                <li style="margin-bottom: 8px;"><strong>theme-preference :</strong> sauvegarde votre préférence de thème clair/sombre (durée : 1 an)</li>
+            </ul>
+
+            <h3 style="font-size: 1.3rem; margin-top: 30px; margin-bottom: 15px;">Gestion des cookies</h3>
+            <p style="margin-bottom: 20px;">Vous pouvez à tout moment modifier vos préférences concernant les cookies en cliquant sur le lien suivant :</p>
+            <button onclick="resetCookieConsent()" class="btn btn-primary" style="margin-bottom: 20px;">
+                <i class="fas fa-cog"></i> Gérer mes préférences de cookies
+            </button>
+            <p style="margin-bottom: 20px; color: var(--text-muted); font-size: 0.9rem;">Vous pouvez également configurer votre navigateur pour refuser les cookies. Cependant, certaines fonctionnalités du site pourraient ne plus fonctionner correctement.</p>
+        </div>
+
+        <div class="glass" style="padding: 40px; margin-bottom: 30px;">
+            <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--accent-primary);">
+                <i class="fas fa-copyright"></i> Propriété intellectuelle
+            </h2>
+            <p style="margin-bottom: 15px;">L'ensemble du contenu de ce site (textes, images, graphismes, logo, icônes, etc.) est la propriété exclusive de Marouane Salami, sauf mention contraire.</p>
+            <p style="margin-bottom: 15px;">Toute reproduction, distribution, modification ou utilisation du contenu, en tout ou partie, sans autorisation préalable est strictement interdite.</p>
+            <p style="margin-bottom: 15px;">Les images utilisées sur ce site proviennent de banques d'images libres de droits (Unsplash) ou sont des créations personnelles.</p>
+        </div>
+
+        <div class="glass" style="padding: 40px; margin-bottom: 30px;">
+            <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--accent-primary);">
+                <i class="fas fa-balance-scale"></i> Responsabilité
+            </h2>
+            <p style="margin-bottom: 15px;">Marouane Salami s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce site. Toutefois, il ne peut être tenu responsable des erreurs, omissions ou résultats obtenus de l'utilisation de ces informations.</p>
+            <p style="margin-bottom: 15px;">Les liens hypertextes présents sur ce site peuvent renvoyer vers des sites externes. Marouane Salami ne peut être tenu responsable du contenu de ces sites tiers.</p>
+        </div>
+
+        <div class="glass" style="padding: 40px; margin-bottom: 30px;">
+            <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--accent-primary);">
+                <i class="fas fa-gavel"></i> Droit applicable
+            </h2>
+            <p style="margin-bottom: 15px;">Les présentes mentions légales sont régies par le droit français. En cas de litige, et à défaut d'accord amiable, les tribunaux français seront seuls compétents.</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="index.html" class="btn btn-primary btn-hover-lift">
+                <i class="fas fa-home"></i> Retour à l'accueil
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-content">
+        <p class="copyright">© 2026 Marouane Salami. Tous droits réservés.</p>
+    </div>
+</footer>
+
+<script>
+// Particules background
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let width, height, particles = [];
+
+function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+}
+
+window.addEventListener('resize', resize);
+resize();
+
+for(let i=0; i<50; i++) {
+    particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 2,
+        vy: (Math.random() - 0.5) * 2,
+        size: Math.random() * 2
+    });
+}
+
+function animate() {
+    ctx.clearRect(0, 0, width, height);
+    particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+        ctx.fillStyle = 'rgba(59, 130, 246, 0.2)';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+    });
+    requestAnimationFrame(animate);
+}
+animate();
+
+// Theme toggle
+document.getElementById('themeToggle').addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const newTheme = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    document.querySelector('#themeToggle i').className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+    localStorage.setItem('theme', newTheme);
+});
+
+// Reset cookie consent
+function resetCookieConsent() {
+    localStorage.removeItem('cookieConsent');
+    alert('Vos préférences de cookies ont été réinitialisées. Rechargez la page pour voir le bandeau de nouveau.');
+}
+</script>
+</body>
+</html>
