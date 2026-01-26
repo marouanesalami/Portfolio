@@ -663,7 +663,8 @@ const projectsData = [
         technologies: ["Figma", "Design System", "Maquettage Mobile-First", "Audit SEO", "Lighthouse", "Core Web Vitals", "Sémantique HTML5"],
         result: "Livraison d'un prototype fonctionnel accompagné d'un audit technique complet. Le projet démontre qu'un beau design peut (et doit) être au service de la performance technique et du positionnement marketing.",
         images: [
-            "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop"
+            "https://res.cloudinary.com/dbmabn5zu/image/upload/v1769427421/4_dyecm6.png"
+           "https://res.cloudinary.com/dbmabn5zu/image/upload/v1769427423/5_qujfaf.png"
         ],
         liveLink: "#",
         githubLink: "#"
@@ -693,7 +694,10 @@ const projectsData = [
         technologies: ["Langage R", "Python", "Statistiques Descriptives", "Machine Learning", "Matrice de Confusion", "Visualisation de données", "Seaborn/Matplotlib"],
         result: "Développement d'un modèle performant atteignant 93% de précision globale (Accuracy). L'analyse a permis d'isoler les facteurs de risque critiques (Rayon, Périmètre, Aire), fournissant un outil d'aide à la décision clinique fiable.",
         images: [
-            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop"
+           "https://res.cloudinary.com/dbmabn5zu/image/upload/v1769363793/Capture_d_%C3%A9cran_2026-01-25_183909_j4ezyq.png"
+           "https://res.cloudinary.com/dbmabn5zu/image/upload/v1769427425/10_uridu2.png"
+           "https://res.cloudinary.com/dbmabn5zu/image/upload/v1769427425/11_xipnnq.png"
+           "https://res.cloudinary.com/dbmabn5zu/image/upload/v1769427427/9_ndc1jp.png"
         ],
         liveLink: "#",
         githubLink: "#"
@@ -709,6 +713,9 @@ const projectsData = [
         result: "Livraison d'un rapport stratégique validé par le client. L'analyse a permis d'isoler trois départements critiques nécessitant une intervention urgente : la Seine-Saint-Denis (93), le Nord (59) et le Rhône (69), en se basant sur des preuves chiffrées irréfutables.",
         images: [
             "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
+           "https://res.cloudinary.com/dbmabn5zu/image/upload/v1769427421/6_sp4oyj.png"
+           "https://res.cloudinary.com/dbmabn5zu/image/upload/v1769427420/8_kgcded.png"
+           "https://res.cloudinary.com/dbmabn5zu/image/upload/v1769427421/7_oeubja.png"
         ],
         liveLink: "#",
         githubLink: "#"
@@ -1004,3 +1011,4 @@ tiltCards.forEach(card => {
 });
 
 console.log('Portfolio Marouane Salami - Tous les scripts chargés avec succès !');
+
