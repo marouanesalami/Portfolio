@@ -45,7 +45,6 @@ body {
     overflow-x: hidden;
     transition: background 0.5s ease, color 0.5s ease;
     position: relative;
-    cursor: none;
 }
 
 /* =========================================
@@ -1915,3 +1914,4 @@ section {
         font-size: 0.9rem; 
     }
 }
+
