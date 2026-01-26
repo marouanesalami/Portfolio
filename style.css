@@ -992,7 +992,6 @@ html[data-theme="light"] .theme-switch {
     background: var(--accent-primary); 
     color: white; 
 }
-
 /* =========================================
    FILTRES
 ========================================= */
@@ -1916,5 +1915,6 @@ section {
         font-size: 0.9rem; 
     }
 }
+
 
 
