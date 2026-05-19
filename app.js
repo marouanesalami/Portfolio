@@ -36,12 +36,13 @@ document.querySelectorAll('a, button, .carousel-card, .tool-card').forEach(el =>
 const preloader = document.getElementById('preloader');
 const starContainer = document.getElementById('starContainer');
 const introText = document.getElementById('introText');
-const sliderContainer = document.getElementById('sliderContainer');
-const sliderThumb = document.getElementById('sliderThumb');
+const enterBtn = document.getElementById('enterBtn');
+const skipBtn = document.getElementById('skipBtn');
 
 // Texte à taper
 const textToType = "Bienvenue sur mon portfolio...";
 let charIndex = 0;
+let autoEnterTimer = null;
 
 // Effet machine à écrire
 function typeWriter() {
@@ -49,6 +50,10 @@ function typeWriter() {
         introText.textContent += textToType.charAt(charIndex);
         charIndex++;
         setTimeout(typeWriter, 80);
+    } else {
+        // Typewriter fini → afficher le bouton + lancer auto-entrée 3s
+        enterBtn.classList.add('visible');
+        autoEnterTimer = setTimeout(triggerEntrance, 3000);
     }
 }
 
@@ -57,81 +62,24 @@ setTimeout(() => {
     typeWriter();
 }, 2200);
 
-// Slider pour entrer
-let isDragging = false;
-let startX = 0;
-let currentX = 0;
-
-sliderThumb.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    startX = e.clientX;
-    sliderThumb.style.cursor = 'grabbing';
+// Clic sur "Entrer"
+enterBtn.addEventListener('click', () => {
+    clearTimeout(autoEnterTimer);
+    triggerEntrance();
 });
 
-document.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    currentX = e.clientX - startX;
-    const maxSlide = sliderContainer.offsetWidth - sliderThumb.offsetWidth - 4;
-
-    if (currentX < 0) currentX = 0;
-    if (currentX > maxSlide) currentX = maxSlide;
-
-    sliderThumb.style.left = `${currentX + 2}px`;
-
-    // Si glissé à plus de 80%
-    if (currentX > maxSlide * 0.8) {
-        triggerEntrance();
-    }
-});
-
-document.addEventListener('mouseup', () => {
-    if (isDragging && currentX < (sliderContainer.offsetWidth - sliderThumb.offsetWidth - 4) * 0.8) {
-        // Revenir au début si pas assez glissé
-        sliderThumb.style.left = '2px';
-    }
-    isDragging = false;
-    sliderThumb.style.cursor = 'grab';
-    startX = 0;
-    currentX = 0;
-});
-
-// Support tactile
-sliderThumb.addEventListener('touchstart', (e) => {
-    isDragging = true;
-    startX = e.touches[0].clientX;
-});
-
-document.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    currentX = e.touches[0].clientX - startX;
-    const maxSlide = sliderContainer.offsetWidth - sliderThumb.offsetWidth - 4;
-
-    if (currentX < 0) currentX = 0;
-    if (currentX > maxSlide) currentX = maxSlide;
-
-    sliderThumb.style.left = `${currentX + 2}px`;
-
-    if (currentX > maxSlide * 0.8) {
-        triggerEntrance();
-    }
-});
-
-document.addEventListener('touchend', () => {
-    if (isDragging && currentX < (sliderContainer.offsetWidth - sliderThumb.offsetWidth - 4) * 0.8) {
-        sliderThumb.style.left = '2px';
-    }
-    isDragging = false;
-    startX = 0;
-    currentX = 0;
+// Clic sur "Passer" — entrée immédiate
+skipBtn.addEventListener('click', () => {
+    clearTimeout(autoEnterTimer);
+    triggerEntrance();
 });
 
 // ANIMATION STYLE NETFLIX
 function triggerEntrance() {
-    isDragging = false;
-
-    // Masquer le texte et le slider
+    // Masquer le texte et les boutons
     introText.parentElement.style.opacity = '0';
-    sliderContainer.style.opacity = '0';
+    enterBtn.style.opacity = '0';
+    skipBtn.style.opacity = '0';
 
     // Après 300ms, agrandir l'étoile (scale 20x en 1.5s)
     setTimeout(() => {
@@ -734,6 +682,51 @@ const projectsData = [
         ],
         liveLink: "#",
         githubLink: "#"
+    },
+
+    // PROJET 13 - MIGRATION TANSTACK (DECIDER AI)
+    {
+        tag: "Architecture Frontend",
+        title: "Migration TanStack — Decider AI",
+        description: "Migration complète de l'architecture d'une application React de production. L'existant reposait sur un FSM (Finite State Machine) maison, react-router-dom et des contextes React pour la gestion d'état — une stack devenue difficile à maintenir et à tester. La mission : supprimer intégralement le FSM et migrer vers les standards actuels de l'écosystème React.",
+        objectives: "Migrer 12 hooks vers TanStack Query v5 (useQuery/useMutation) pour le cache intelligent, le prefetching et la synchronisation serveur automatique. Remplacer entièrement react-router-dom par TanStack Router dans 27 fichiers pour un routage 100% type-safe avec validation des paramètres d'URL. Concevoir deux stores Zustand (authStore, chatSessionStore) pour la gestion d'état global côté client, en remplacement des contextes React. Ticket DA-450 : ajout de permaliens uniques pour les chats projet (/project/:id/chat/:chatId).",
+        technologies: ["React", "TanStack Query v5", "TanStack Router", "Zustand", "TypeScript", "Vite"],
+        result: "Migration complète en 5 étapes : FSM entièrement supprimé (commit 334b0011), 0 erreur TypeScript (pnpm typecheck ✅), aucun test régressé sur 65 fichiers de test. Architecture plus maintenable, type-safe et découplée — base solide pour les évolutions produit suivantes.",
+        images: [
+            "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop"
+        ],
+        liveLink: "#",
+        githubLink: "#"
+    },
+
+    // PROJET 14 - REVUE DE CODE AUTOMATISÉE (DECIDER AI)
+    {
+        tag: "Qualité Logicielle",
+        title: "Revue de Code Automatisée — Decider AI",
+        description: "Conception et implémentation d'un système de revue de code automatisée à deux couches pour une équipe de développeurs. Le système existant — 6 agents IA en parallèle sur le diff complet — souffrait de faux positifs, d'une consommation excessive de tokens Opus et de résultats non reproductibles. La mission : repartir de zéro sur l'architecture en traitant le coût des tokens comme contrainte centrale.",
+        objectives: "Concevoir une Layer 1 déterministe (Biome + scripts bash) couvrant 8 règles mécaniques du projet — zéro token, zéro ambiguïté, zéro faux positif. Développer une Layer 2 IA enrichie par le contexte du ticket (cascade MCP Jira → OpenSpec → PR GitHub → git commits) permettant aux agents de qualifier leurs findings par rapport à l'intention du développeur. Optimiser les modèles : 4 agents Opus → Sonnet (~3x moins de coût Opus). Valider le système par self-review sur sa propre branche — 7 bugs corrigés avant merge.",
+        technologies: ["Claude Code", "Biome", "Bash", "TypeScript", "GitHub Actions", "MCP Jira"],
+        result: "Système v1 opérationnel : 8 règles couvertes de façon déterministe, agents contextualisés par ticket, 3x réduction de la consommation Opus. Testé en conditions réelles sur une PR de 515 lignes — findings actionnables avec distinction violations nouvelles / pré-existantes.",
+        images: [
+            "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&h=600&fit=crop"
+        ],
+        liveLink: "#",
+        githubLink: "#"
+    },
+
+    // PROJET 15 - TESTS E2E (DECIDER AI)
+    {
+        tag: "Tests & CI/CD",
+        title: "Tests End-to-End — Decider AI",
+        description: "Mise en place d'une suite de tests End-to-End complète sur un SaaS React/NestJS existant, sans aucune infrastructure de test E2E préalable. Avant de toucher à Playwright, plusieurs heures ont été consacrées à lire le code frontend pour comprendre les subtilités réelles : FSM polling, connexions SSE permanentes, named events EventSource — chaque découverte a conduit à adapter la stratégie de test.",
+        objectives: "Couvrir 8 flux prioritaires (login, projets, upload, dataroom, chat, MFA, session) avec une stratégie storageState évitant le re-login à chaque test. Résoudre les contraintes SSE : les named events EventSource ne pouvant être mockés via Playwright, tester le comportement observable (message optimiste) plutôt que la réponse IA. Ajouter 09-document-analysis.spec.ts : flux complet upload ZIP → pipeline Temporal → indexation RAG → chat. Ajouter 10-llm-evaluation.spec.ts : golden dataset de 4 questions avec LLM-as-judge (seuil 0.7) pour bloquer automatiquement toute régression qualité.",
+        technologies: ["Playwright", "TypeScript", "GitHub Actions", "Docker Compose", "NestJS", "CI/CD"],
+        result: "27 tests stables, 0 échec en CI sur plusieurs exécutions consécutives. Intégration complète dans le pipeline GitHub Actions avec tous les services Docker. Correction bonus : 2 incohérences type frontend/backend découvertes pendant l'écriture des tests (projectId vs id, dataroomId vs id).",
+        images: [
+            "https://images.unsplash.com/photo-1607706189992-eae578626c86?w=800&h=600&fit=crop"
+        ],
+        liveLink: "#",
+        githubLink: "#"
     }
 ];
 
@@ -852,140 +845,6 @@ document.getElementById('cvModal').addEventListener('click', (e) => {
     }
 });
 
-/* =========================================
-   CHARTS COMPÉTENCES
-========================================= */
-// Chart Développement
-const ctxDev = document.getElementById('chartDev').getContext('2d');
-new Chart(ctxDev, {
-    type: 'radar',
-    data: {
-        labels: ['HTML/CSS', 'JavaScript', 'React', 'PHP', 'Node.js'],
-        datasets: [{
-            label: 'Niveau',
-            data: [90, 85, 75, 70, 65],
-            backgroundColor: 'rgba(59, 130, 246, 0.2)',
-            borderColor: 'rgba(59, 130, 246, 1)',
-            borderWidth: 2,
-            pointBackgroundColor: 'rgba(59, 130, 246, 1)'
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        scales: {
-            r: {
-                beginAtZero: true,
-                max: 100,
-                ticks: {
-                    display: false
-                },
-                grid: {
-                    color: 'rgba(255, 255, 255, 0.1)'
-                },
-                pointLabels: {
-                    color: 'rgba(255, 255, 255, 0.7)',
-                    font: {
-                        size: 12
-                    }
-                }
-            }
-        },
-        plugins: {
-            legend: {
-                display: false
-            }
-        }
-    }
-});
-
-// Chart Communication
-const ctxCom = document.getElementById('chartCom').getContext('2d');
-new Chart(ctxCom, {
-    type: 'radar',
-    data: {
-        labels: ['Travail d\'équipe', 'Présentation', 'Rédaction', 'Gestion projet', 'Veille'],
-        datasets: [{
-            label: 'Niveau',
-            data: [85, 80, 75, 70, 90],
-            backgroundColor: 'rgba(59, 130, 246, 0.2)',
-            borderColor: 'rgba(59, 130, 246, 1)',
-            borderWidth: 2,
-            pointBackgroundColor: 'rgba(59, 130, 246, 1)'
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        scales: {
-            r: {
-                beginAtZero: true,
-                max: 100,
-                ticks: {
-                    display: false
-                },
-                grid: {
-                    color: 'rgba(255, 255, 255, 0.1)'
-                },
-                pointLabels: {
-                    color: 'rgba(255, 255, 255, 0.7)',
-                    font: {
-                        size: 12
-                    }
-                }
-            }
-        },
-        plugins: {
-            legend: {
-                display: false
-            }
-        }
-    }
-});
-
-// Chart Créativité
-const ctxCrea = document.getElementById('chartCrea').getContext('2d');
-new Chart(ctxCrea, {
-    type: 'radar',
-    data: {
-        labels: ['UI Design', 'UX', 'Photoshop', 'Illustrator', 'Figma'],
-        datasets: [{
-            label: 'Niveau',
-            data: [80, 85, 75, 70, 90],
-            backgroundColor: 'rgba(59, 130, 246, 0.2)',
-            borderColor: 'rgba(59, 130, 246, 1)',
-            borderWidth: 2,
-            pointBackgroundColor: 'rgba(59, 130, 246, 1)'
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        scales: {
-            r: {
-                beginAtZero: true,
-                max: 100,
-                ticks: {
-                    display: false
-                },
-                grid: {
-                    color: 'rgba(255, 255, 255, 0.1)'
-                },
-                pointLabels: {
-                    color: 'rgba(255, 255, 255, 0.7)',
-                    font: {
-                        size: 12
-                    }
-                }
-            }
-        },
-        plugins: {
-            legend: {
-                display: false
-            }
-        }
-    }
-});
 
 /* =========================================
    CARD TILT EFFECT
